@@ -1,8 +1,6 @@
 package main;
-
 import java.awt.*;
 import java.util.Random;
-
 import model.*;
 
 public class MyCanvas extends Canvas implements Runnable {
@@ -27,7 +25,6 @@ public class MyCanvas extends Canvas implements Runnable {
     static final int SHOT_DOWN = 2; // 按下
     int shotkey_state;
 
-
     MyCanvas() {
         keyinput = new KeyInput();
         addKeyListener(keyinput);
@@ -46,11 +43,10 @@ public class MyCanvas extends Canvas implements Runnable {
         objectpool = new ObjectPool();
         Score.loadScore();
         scene = SCENE_TITLE; // 初始化后进入标题画面
-        gameover = false;    // 重置游戏状态
-        Level.initLevel();   // 关卡初始化
-        Score.initScore();   // 分数初始化
+        gameover = false; // 重置游戏状态
+        Level.initLevel(); // 关卡初始化
+        Score.initScore(); // 分数初始化
     }
-
 
     public void initThread() { // 初始化线程
         Thread thread = new Thread(this);
@@ -64,7 +60,6 @@ public class MyCanvas extends Canvas implements Runnable {
     public void paint(Graphics g) {
         g.drawImage(imgBuf, 0, 0, this);
     }
-
 
     @Override
     public void run() {
@@ -102,13 +97,13 @@ public class MyCanvas extends Canvas implements Runnable {
         }
     }
 
-
-    public void update(Graphics g) { // 提高效率不每次清除屏幕
+    // 提高效率不每次清除屏幕
+    public void update(Graphics g) {
         paint(g);
     }
 
-
-    void gameMain() { // 游戏开始
+    // 游戏开始
+    void gameMain() {
         // 是否开始游戏
         if (objectpool.isGameover()) {
             title.drawGameover(gBuf);
@@ -141,6 +136,7 @@ public class MyCanvas extends Canvas implements Runnable {
 
         // 游戏对象统一绘制
         objectpool.drawAll(gBuf);
+
         // 得分绘制
         score.drawScore(gBuf);
         score.drawHiScore(gBuf);

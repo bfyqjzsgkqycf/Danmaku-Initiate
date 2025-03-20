@@ -1,11 +1,10 @@
 package model;
-
 import java.awt.*;
-
 import main.*;
 
 // 玩家类, 移动和绘制的实现
 public class Player extends GameObject {
+
     double speed;
 
     /**
@@ -22,7 +21,6 @@ public class Player extends GameObject {
     }
 
     public void move() {
-        // 抽象类中的抽象方法的参数对应的子类的方法的参数必须一致
     }
 
     /**
@@ -43,8 +41,8 @@ public class Player extends GameObject {
         }
     }
 
-
-    public void draw(Graphics g) { // 循环一次绘制一次
+    // 循环一次绘制一次
+    public void draw(Graphics g) {
         if (active) {
             g.setColor(Color.green);
             // 绘制玩家三角形

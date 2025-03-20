@@ -1,32 +1,31 @@
 package model;
-
 import java.awt.*;
 
 // 标题和游戏结束画面绘制
 public class Title {
+
     int count; // 动画计数器
     Font titleFont;
     Font infoFont;
 
-
-    public Title() { // 为标题实例化字体类
+    // 为标题实例化字体类
+    public Title() {
         count = 0;
         titleFont = new Font("SimHei", Font.BOLD, 20);
         infoFont = new Font("SimHei", Font.BOLD, 10);
     }
 
-
-    public void drawTitle(Graphics g) { // 游戏开始界面
+    // 游戏开始界面
+    public void drawTitle(Graphics g) {
         g.setColor(Color.white);
         count++;
         g.setFont(titleFont);
-        g.drawString("Micro Danmaku", 170, 150);
+        g.drawString("Danmaku-Initiate", 170, 150);
         g.drawString("Press SPACE", 180, 350);
-
     }
 
-
-    public void drawGameover(Graphics g) { // 游戏结束界面
+    // 游戏结束界面
+    public void drawGameover(Graphics g) {
         g.setColor(Color.white);
         count++;
         g.setFont(titleFont);

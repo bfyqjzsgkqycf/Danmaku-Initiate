@@ -1,17 +1,17 @@
 package model;
-
 import java.awt.*;
-
 import main.*;
 
 // 玩家子弹类
 public class PlayerBullet extends GameObject {
 
-    public PlayerBullet() { // 玩家子弹构造方法
+    // 玩家子弹构造方法
+    public PlayerBullet() {
         active = false;
     }
 
-    public void move() { // 玩家子弹的移动
+    // 玩家子弹的移动
+    public void move() {
         y -= 15;
         // 移动出屏幕后从画面消失
         if ((y < 0)) {
@@ -19,7 +19,8 @@ public class PlayerBullet extends GameObject {
         }
     }
 
-    public void draw(Graphics g) { // 循环一次执行一次
+    // 循环一次执行一次
+    public void draw(Graphics g) {
         g.setColor(Color.blue);
         // 绘制长方形
         g.drawRect((int) x - 3, (int) y - 10, (int) 6, (int) 20);
@@ -31,4 +32,5 @@ public class PlayerBullet extends GameObject {
         y = iy;
         active = true; // 可视化子弹
     }
+
 }

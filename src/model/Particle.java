@@ -1,11 +1,10 @@
 package model;
-
 import java.awt.*;
-
 import main.GameObject;
 
 // 粒子特效
 public class Particle extends GameObject {
+
     double direction;
     double speed;
     double speedX;
@@ -28,7 +27,6 @@ public class Particle extends GameObject {
         }
     }
 
-
     public void draw(Graphics g) {
         g.setColor(Color.gray);
         g.drawOval((int) (x - size / 2), (int) (y - size / 2), size, size);
@@ -43,10 +41,11 @@ public class Particle extends GameObject {
         active = true;
         size = 30;
 
-        // 为了更高的速度, 把极坐标转 x y
+        // 为了更高的速度, 把极坐标转 xy
         double radian;
         radian = Math.toRadians(direction); // 度数转弧度
         speedX = speed * Math.cos(radian);
         speedY = speed * Math.sin(radian);
     }
+
 }

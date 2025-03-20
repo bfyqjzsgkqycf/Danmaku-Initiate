@@ -4,6 +4,7 @@ import java.awt.*;
 
 // 得分的控制和显示
 public class Score {
+
     static int myscore;
     static int hiscore;
     Font scoreFont;
@@ -13,23 +14,27 @@ public class Score {
         myscore = 0;
     }
 
-    public void drawScore(Graphics g) { // 得分显示
+    // 得分显示
+    public void drawScore(Graphics g) {
         g.setColor(Color.white);
         g.setFont(scoreFont);
         g.drawString("得分:" + myscore, 10, 30);
     }
 
-    public void drawHiScore(Graphics g) { // 最高分显示
+    // 最高分显示
+    public void drawHiScore(Graphics g) {
         g.setColor(Color.white);
         g.setFont(scoreFont);
         g.drawString("最高分:" + hiscore, 350, 30);
     }
 
-    public static void addScore(int gain) { // 计分添加
+    // 计分添加
+    public static void addScore(int gain) {
         myscore += gain;
     }
 
-    public static void compareScore() { // 最高分更新处理
+    // 最高分更新处理
+    public static void compareScore() {
         if (myscore > hiscore) {
             hiscore = myscore;
             saveScore();
@@ -37,15 +42,13 @@ public class Score {
     }
 
     static void saveScore() {
-
     }
 
     public static void loadScore() {
-
     }
-
 
     public static void initScore() {
         myscore = 0;
     }
+
 }

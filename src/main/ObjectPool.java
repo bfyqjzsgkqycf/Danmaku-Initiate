@@ -9,6 +9,7 @@ import model.*;
  * 碰撞检测
  */
 public class ObjectPool {
+
     boolean GodMode = false; // 无敌模式（调试用）
 
     static EnemyBullet[] EnemyBullet; // 提前生成保存敌弹队列
@@ -27,7 +28,6 @@ public class ObjectPool {
     static final int ENEMY_MAX = 50;
     static final int PARTICLE_MAX = 400;
     static final int PlayerBullet_MAX = 10;
-
 
     ObjectPool() {
         // 初始化玩家
@@ -59,7 +59,8 @@ public class ObjectPool {
         }
     }
 
-    public void drawAll(Graphics g) { // 绘制所有游戏对象
+    // 绘制所有游戏对象
+    public void drawAll(Graphics g) {
         doGameObjects(g, EnemyBullet);
         doGameObjects(g, enemy);
         doGameObjects(g, PlayerBullet);
@@ -67,7 +68,8 @@ public class ObjectPool {
         player.draw(g);
     }
 
-    public void doGameObjects(Graphics g, GameObject[] objary) { // 按照排列规则
+    // 按照排列规则
+    public void doGameObjects(Graphics g, GameObject[] objary) {
         for (int i = 0; i < objary.length; i++) {
             if (objary[i].active == true) {
                 objary[i].move();
@@ -144,14 +146,16 @@ public class ObjectPool {
         return -1;
     }
 
-    public void shotPlayer() { // 玩家发射子弹
+    // 玩家发射子弹
+    public void shotPlayer() {
         // 只在可见时可以发射
         if (player.active) {
             newPlayerBullets(player.x, player.y);
         }
     }
 
-    public void movePlayer(KeyInput keyinput) { // 玩家移动控制
+    // 玩家移动控制
+    public void movePlayer(KeyInput keyinput) {
         player.move(keyinput.getXDirection(), keyinput.getYDirection());
     }
 
@@ -168,8 +172,8 @@ public class ObjectPool {
         return Math.sqrt(Math.pow(Xdiff, 2) + Math.pow(Ydiff, 2));
     }
 
-
-    public void getColision() {    //碰撞检测
+    //碰撞检测
+    public void getColision() {
         // 敌人子弹与玩家的碰撞
         for (int i = 0; i < EnemyBullet.length && GodMode == false; i++) {
             if ((EnemyBullet[i].active) && (player.active)) { // 中弹判断

@@ -1,22 +1,21 @@
 package model;
-
 import java.awt.*;
-
 import main.*;
 
 // 敌人类
 public class Enemy extends GameObject {
-    int counter = 0;         // 生存时间
-    int life = 0;            // 生命值
-    int type = 0;            // 敌人类型
-    boolean able = false;    // 判定点
-    Player player;           // 玩家的构造方法
-    boolean startshoot;      // 开始标记
+
+    int counter = 0; // 生存时间
+    int life = 0; // 生命值
+    int type = 0; // 敌人类型
+    boolean able = false; // 判定点
+    Player player; // 玩家的构造方法
+    boolean startshoot; // 开始标记
     int shootnum;
 
     public Enemy(Player iplayer) {
-        player = iplayer;    // 取玩家位置
-        active = false;      // 避免初始化时被激活
+        player = iplayer; // 取玩家位置
+        active = false; // 避免初始化时被激活
     }
 
     /**
@@ -28,19 +27,20 @@ public class Enemy extends GameObject {
         x = ix;
         y = iy;
         type = (int) (Math.random() + 0.5);
-        active = true;   // 启用敌方子弹
-        life = 5;        // 敌人有 5 生命值
+        active = true; // 启用敌方子弹
+        life = 5; // 敌人有 5 生命值
         counter = 0;
 
         shootnum = Level.getLevel();
         startshoot = false;
     }
 
-    public void hit() {    // 当与玩家子弹碰撞时
-        life--;            // 减生命值
+    // 当与玩家子弹碰撞时
+    public void hit() {
+        life--; // 减生命值
         able = true;
 
-        if (life < 0) {    // 不同敌人不同得分
+        if (life < 0) { // 不同敌人不同得分
 
             switch (type) {
                 case 0:
@@ -61,7 +61,8 @@ public class Enemy extends GameObject {
         }
     }
 
-    public void move() { // 循环一次执行一次
+    // 循环一次执行一次
+    public void move() {
         // 按类型划分
         switch (type) {
             case 0:
@@ -74,7 +75,8 @@ public class Enemy extends GameObject {
         }
     }
 
-    void move_enemy0() { // 敌机动作效果 1（左右摆动）
+    // 敌机动作效果 1（左右摆动）
+    void move_enemy0() {
         counter++;
         y++;
         // 左右摆动
@@ -89,7 +91,8 @@ public class Enemy extends GameObject {
         }
     }
 
-    void move_enemy1() // 敌机动作效果 2（上方弹出后退出）
+    // 敌机动作效果 2（上方弹出后退出）
+    void move_enemy1()
     {
         counter++;
 
@@ -117,7 +120,8 @@ public class Enemy extends GameObject {
         }
     }
 
-    public void draw(Graphics g) { // 循环一次绘制一次
+    // 循环一次绘制一次
+    public void draw(Graphics g) {
         if (able) {
             g.setColor(Color.orange); // 如果被玩家击中的话, 将颜色设为黄色
         } else {
@@ -136,4 +140,5 @@ public class Enemy extends GameObject {
         // 绘制正方形
         g.drawRect((int) x - 16, (int) y - 16, (int) 32, (int) 32);
     }
+
 }

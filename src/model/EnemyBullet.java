@@ -1,17 +1,17 @@
 package model;
-
 import java.awt.*;
-
 import main.*;
 
 // 敌机子弹类
 public class EnemyBullet extends GameObject {
+
     double direction;
     double speed;
     double speedX;
     double speedY;
 
-    public EnemyBullet() { // 敌军子弹构造方法
+    // 敌军子弹构造方法
+    public EnemyBullet() {
         active = false;
     }
 
@@ -45,7 +45,7 @@ public class EnemyBullet extends GameObject {
 
         // 提高处理速度, 从极坐标转到 xy
         double radian;
-        radian = Math.toRadians(direction);    //度数转弧度
+        radian = Math.toRadians(direction); //度数转弧度
         speedX = speed * Math.cos(radian);
         speedY = speed * Math.sin(radian);
     }
@@ -63,4 +63,5 @@ public class EnemyBullet extends GameObject {
         ObjectPool.newEnemyBullet(x, y, degree + 20, 4);
         ObjectPool.newEnemyBullet(x, y, degree - 20, 4);
     }
+
 }
